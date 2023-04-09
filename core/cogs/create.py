@@ -70,7 +70,7 @@ class Create(Cog, name="Create"):
 
 
 class MyView(ui.View):
-    __slots__ = "disable"
+    __slots__ = "secret_key"
 
     def __init__(self, secret_key: str):
         super().__init__(timeout=None)
@@ -107,7 +107,7 @@ class MyView(ui.View):
 
 
 class MyModal(ui.Modal):
-    __slots__ = ("secret_key", "vault", "title_ui", "description_ui", "max_lines_ui", "timeout_ui")
+    __slots__ = ("secret_key", "vault", "role", "title_ui", "description_ui", "thumbnail_ui", "max_lines_ui", "timeout_ui")
 
     def __init__(self, vault: VaultType, role: Role, secret_key: str):
         super().__init__(title=f"Creating a Card")
