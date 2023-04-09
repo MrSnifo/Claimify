@@ -46,6 +46,7 @@ class Vault(Cog, name="Vault"):
     @app_commands.command(name="vault", description="Securely store and manage data.")
     @app_commands.describe(code="Vault unique identifier.")
     async def slash(self, interaction: Interaction, option: Literal["open", "create", "remove"], code: str) -> None:
+        code = code.lower()
         async with Database(guild_id=interaction.guild_id, owner_id=interaction.guild.owner_id,
                             secret_key=self.bot.secret_key) as db:
             vault: Optional[VaultType] = await db.get_vault(code=code)
