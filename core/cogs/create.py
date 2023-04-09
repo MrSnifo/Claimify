@@ -58,6 +58,7 @@ class Create(Cog, name="Create"):
     @app_commands.command(name="create", description="Create a reward card.")
     @app_commands.describe(code="Vault unique identifier.")
     async def slash(self, interaction: Interaction, code: str, role: Role) -> None:
+        code = code.lower()
         async with Database(guild_id=interaction.guild_id, owner_id=interaction.guild.owner_id,
                             secret_key=self.bot.secret_key) as db:
             vault: Optional[VaultType] = await db.get_vault(code=code)
@@ -90,7 +91,7 @@ class MyView(ui.View):
                             embed = Embed(title="Claimed!", description=f"```{lines}```", colour=0x248046)
                         else:
                             time = f"<t:{int(datetime.timestamp(datetime.now() + timedelta(seconds=claim)))}:R>"
-                            embed = embed_wrong(msg=f"You have reached the maximum limit for this action. "
+                            embed = embed_wrong(msg=f"You have reached the maximum limit.\n"
                                                     f"Please try again {time}.")
 
                     except Errors.VaultNotFound:
