@@ -107,7 +107,8 @@ class MyView(ui.View):
 
 
 class MyModal(ui.Modal):
-    __slots__ = ("secret_key", "vault", "role", "title_ui", "description_ui", "thumbnail_ui", "max_lines_ui", "timeout_ui")
+    __slots__ = ("secret_key", "vault", "role", "title_ui", "description_ui", "thumbnail_ui", "max_lines_ui",
+                 "timeout_ui")
 
     def __init__(self, vault: VaultType, role: Role, secret_key: str):
         super().__init__(title=f"Creating a Card")
